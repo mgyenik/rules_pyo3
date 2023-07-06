@@ -1,6 +1,6 @@
 """Build rules for PyO3"""
 
-load("@rules_rust//rust:rust.bzl", "rust_library")
+load("@rules_rust//rust:defs.bzl", "rust_shared_library")
 load("@rules_python//python:defs.bzl", "py_library")
 
 def pyo3_extension(
@@ -24,16 +24,15 @@ def pyo3_extension(
     name_rs = name + "_rs"
     name_so = name + ".so"
 
-    rust_library(
+    rust_shared_library(
         name = name_rs,
         deps = ["@rules_pyo3//:pyo3"] + deps,
-        crate_type = "cdylib",
         visibility = ["//visibility:private"],
         **kwargs
     )
 
     native.genrule(
-        name = name_so,
+        name = "gen_" + name_so,
         srcs = [":" + name_rs],
         outs = [name_so],
         visibility = visibility,
@@ -43,6 +42,6 @@ def pyo3_extension(
     py_library(
         name = name,
         srcs = py_srcs,
-        data = [name_so],
+        data = [":"+name_so],
         visibility = visibility,
     )
