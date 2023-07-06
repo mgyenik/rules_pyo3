@@ -10,9 +10,10 @@ load("@bazel_skylib//lib:selects.bzl", "selects")
 
 # buildifier: disable=load
 load(
-    "@rules_rust//rust:rust.bzl",
+    "@rules_rust//rust:defs.bzl",
     "rust_binary",
     "rust_library",
+    "rust_proc_macro",
     "rust_test",
 )
 
@@ -30,15 +31,10 @@ licenses([
 
 # Generated Targets
 
-# Unsupported target "bench" with type "bench" omitted
-
 rust_library(
-    name = "smallvec",
+    name = "unindent",
     srcs = glob(["**/*.rs"]),
-    crate_features = [
-    ],
     crate_root = "src/lib.rs",
-    crate_type = "lib",
     data = [],
     edition = "2018",
     rustc_flags = [
@@ -46,12 +42,11 @@ rust_library(
     ],
     tags = [
         "cargo-raze",
+        "crate-name=unindent",
         "manual",
     ],
-    version = "1.6.1",
+    version = "0.1.11",
     # buildifier: leave-alone
     deps = [
     ],
 )
-
-# Unsupported target "macro" with type "test" omitted
