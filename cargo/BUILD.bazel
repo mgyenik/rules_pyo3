@@ -14,7 +14,7 @@ licenses([
 # Aliased targets
 alias(
     name = "pyo3",
-    actual = "@rules_pyo3__pyo3__0_13_2//:pyo3",
+    actual = "@rules_pyo3__pyo3__0_19_1//:pyo3",
     tags = [
         "cargo-raze",
         "manual",

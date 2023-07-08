@@ -26,35 +26,30 @@ package(default_visibility = [
 ])
 
 licenses([
-    "notice",  # MIT from expression "MIT OR Apache-2.0"
+    "notice",  # Apache-2.0 from expression "Apache-2.0"
 ])
 
 # Generated Targets
 
 rust_library(
-    name = "indoc",
+    name = "pyo3_macros_backend",
     srcs = glob(["**/*.rs"]),
     crate_root = "src/lib.rs",
     data = [],
     edition = "2018",
-    proc_macro_deps = [
-        "@rules_pyo3__indoc_impl__0_3_6//:indoc_impl",
-        "@rules_pyo3__proc_macro_hack__0_5_20_deprecated//:proc_macro_hack",
-    ],
     rustc_flags = [
         "--cap-lints=allow",
     ],
     tags = [
         "cargo-raze",
-        "crate-name=indoc",
+        "crate-name=pyo3-macros-backend",
         "manual",
     ],
-    version = "0.3.6",
+    version = "0.19.1",
     # buildifier: leave-alone
     deps = [
+        "@rules_pyo3__proc_macro2__1_0_63//:proc_macro2",
+        "@rules_pyo3__quote__1_0_29//:quote",
+        "@rules_pyo3__syn__1_0_109//:syn",
     ],
 )
-
-# Unsupported target "compiletest" with type "test" omitted
-
-# Unsupported target "run-pass" with type "test" omitted

@@ -26,30 +26,47 @@ package(default_visibility = [
 ])
 
 licenses([
-    "notice",  # BSD-3-Clause from expression "BSD-3-Clause"
+    "notice",  # MIT from expression "MIT OR Apache-2.0"
 ])
 
 # Generated Targets
 
+# Unsupported target "bench" with type "example" omitted
+
+# Unsupported target "bench_acquire" with type "example" omitted
+
+# Unsupported target "lazy_static" with type "example" omitted
+
+# Unsupported target "reentrant_init_deadlocks" with type "example" omitted
+
+# Unsupported target "regex" with type "example" omitted
+
+# Unsupported target "test_synchronization" with type "example" omitted
+
 rust_library(
-    name = "instant",
+    name = "once_cell",
     srcs = glob(["**/*.rs"]),
+    crate_features = [
+        "alloc",
+        "default",
+        "race",
+        "std",
+    ],
     crate_root = "src/lib.rs",
     data = [],
-    edition = "2018",
+    edition = "2021",
     rustc_flags = [
         "--cap-lints=allow",
     ],
     tags = [
         "cargo-raze",
-        "crate-name=instant",
+        "crate-name=once_cell",
         "manual",
     ],
-    version = "0.1.12",
+    version = "1.18.0",
     # buildifier: leave-alone
     deps = [
-        "@rules_pyo3__cfg_if__1_0_0//:cfg_if",
     ],
 )
 
-# Unsupported target "wasm" with type "test" omitted
+# Unsupported target "it" with type "test" omitted

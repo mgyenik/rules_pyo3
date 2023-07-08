@@ -38,7 +38,7 @@ load(
 )
 
 cargo_build_script(
-    name = "proc_macro_hack_build_script",
+    name = "windows_x86_64_gnu_build_script",
     srcs = glob(["**/*.rs"]),
     build_script_env = {
     },
@@ -52,14 +52,14 @@ cargo_build_script(
         "cargo-raze",
         "manual",
     ],
-    version = "0.5.20+deprecated",
+    version = "0.48.0",
     visibility = ["//visibility:private"],
     deps = [
     ],
 )
 
-rust_proc_macro(
-    name = "proc_macro_hack",
+rust_library(
+    name = "windows_x86_64_gnu",
     srcs = glob(["**/*.rs"]),
     crate_root = "src/lib.rs",
     data = [],
@@ -69,14 +69,12 @@ rust_proc_macro(
     ],
     tags = [
         "cargo-raze",
-        "crate-name=proc-macro-hack",
+        "crate-name=windows_x86_64_gnu",
         "manual",
     ],
-    version = "0.5.20+deprecated",
+    version = "0.48.0",
     # buildifier: leave-alone
     deps = [
-        ":proc_macro_hack_build_script",
+        ":windows_x86_64_gnu_build_script",
     ],
 )
-
-# Unsupported target "compiletest" with type "test" omitted

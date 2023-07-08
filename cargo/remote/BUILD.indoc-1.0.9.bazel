@@ -26,15 +26,13 @@ package(default_visibility = [
 ])
 
 licenses([
-    "notice",  # Apache-2.0 from expression "Apache-2.0 OR MIT"
+    "notice",  # MIT from expression "MIT OR Apache-2.0"
 ])
 
 # Generated Targets
 
-# Unsupported target "example" with type "example" omitted
-
 rust_proc_macro(
-    name = "ctor",
+    name = "indoc",
     srcs = glob(["**/*.rs"]),
     crate_root = "src/lib.rs",
     data = [],
@@ -44,13 +42,21 @@ rust_proc_macro(
     ],
     tags = [
         "cargo-raze",
-        "crate-name=ctor",
+        "crate-name=indoc",
         "manual",
     ],
-    version = "0.1.26",
+    version = "1.0.9",
     # buildifier: leave-alone
     deps = [
-        "@rules_pyo3__quote__1_0_29//:quote",
-        "@rules_pyo3__syn__1_0_109//:syn",
     ],
 )
+
+# Unsupported target "compiletest" with type "test" omitted
+
+# Unsupported target "test_formatdoc" with type "test" omitted
+
+# Unsupported target "test_indoc" with type "test" omitted
+
+# Unsupported target "test_unindent" with type "test" omitted
+
+# Unsupported target "test_writedoc" with type "test" omitted

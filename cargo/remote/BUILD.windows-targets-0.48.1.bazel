@@ -31,29 +31,22 @@ licenses([
 
 # Generated Targets
 
-rust_proc_macro(
-    name = "indoc_impl",
+rust_library(
+    name = "windows_targets",
     srcs = glob(["**/*.rs"]),
     crate_root = "src/lib.rs",
     data = [],
     edition = "2018",
-    proc_macro_deps = [
-        "@rules_pyo3__proc_macro_hack__0_5_20_deprecated//:proc_macro_hack",
-    ],
     rustc_flags = [
         "--cap-lints=allow",
     ],
     tags = [
         "cargo-raze",
-        "crate-name=indoc-impl",
+        "crate-name=windows-targets",
         "manual",
     ],
-    version = "0.3.6",
+    version = "0.48.1",
     # buildifier: leave-alone
     deps = [
-        "@rules_pyo3__proc_macro2__1_0_63//:proc_macro2",
-        "@rules_pyo3__quote__1_0_29//:quote",
-        "@rules_pyo3__syn__1_0_109//:syn",
-        "@rules_pyo3__unindent__0_1_11//:unindent",
     ],
 )

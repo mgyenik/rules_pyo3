@@ -26,7 +26,7 @@ package(default_visibility = [
 ])
 
 licenses([
-    "notice",  # MIT from expression "MIT OR Apache-2.0"
+    "notice",  # MIT from expression "MIT"
 ])
 
 # Generated Targets
@@ -38,13 +38,16 @@ load(
 )
 
 cargo_build_script(
-    name = "inventory_build_script",
+    name = "memoffset_build_script",
     srcs = glob(["**/*.rs"]),
     build_script_env = {
     },
+    crate_features = [
+        "default",
+    ],
     crate_root = "build.rs",
     data = glob(["**"]),
-    edition = "2018",
+    edition = "2015",
     rustc_flags = [
         "--cap-lints=allow",
     ],
@@ -52,36 +55,33 @@ cargo_build_script(
         "cargo-raze",
         "manual",
     ],
-    version = "0.1.11",
+    version = "0.9.0",
     visibility = ["//visibility:private"],
     deps = [
+        "@rules_pyo3__autocfg__1_1_0//:autocfg",
     ],
 )
 
-# Unsupported target "flags" with type "example" omitted
-
 rust_library(
-    name = "inventory",
+    name = "memoffset",
     srcs = glob(["**/*.rs"]),
+    crate_features = [
+        "default",
+    ],
     crate_root = "src/lib.rs",
     data = [],
-    edition = "2018",
-    proc_macro_deps = [
-        "@rules_pyo3__ctor__0_1_26//:ctor",
-        "@rules_pyo3__ghost__0_1_13//:ghost",
-        "@rules_pyo3__inventory_impl__0_1_11//:inventory_impl",
-    ],
+    edition = "2015",
     rustc_flags = [
         "--cap-lints=allow",
     ],
     tags = [
         "cargo-raze",
-        "crate-name=inventory",
+        "crate-name=memoffset",
         "manual",
     ],
-    version = "0.1.11",
+    version = "0.9.0",
     # buildifier: leave-alone
     deps = [
-        ":inventory_build_script",
+        ":memoffset_build_script",
     ],
 )
